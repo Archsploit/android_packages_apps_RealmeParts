@@ -123,18 +123,18 @@
             android:summary="@string/refresh_rate_60_summary" />
 
         <com.realmeparts.RadioButtonPreference
-            android:icon="@drawable/refresh_rate_120_icon"
-            android:key="refresh_rate_120"
+            android:icon="@drawable/refresh_rate_90_icon"
+            android:key="refresh_rate_90"
             android:checked="true"
             android:enabled="true"
-            android:title="@string/refresh_rate_120_title"
-            android:summary="@string/refresh_rate_120_summary"  />
+            android:title="@string/refresh_rate_90_title"
+            android:summary="@string/refresh_rate_90_summary"  />
 
         <SwitchPreference
-            android:key="refresh_rate_120Forced"
-            android:icon="@drawable/refresh_rate_120forced_icon"
-            android:summary="@string/refresh_rate_120Forced_summary"
-            android:title="@string/refresh_rate_120Forced_title" />
+            android:key="refresh_rate_90Forced"
+            android:icon="@drawable/refresh_rate_90forced_icon"
+            android:summary="@string/refresh_rate_90Forced_summary"
+            android:title="@string/refresh_rate_90Forced_title" />
 
     </PreferenceCategory>
 
