@@ -56,6 +56,7 @@ public class DeviceSettings extends PreferenceFragment
     public static final String KEY_DT2W_SWITCH = "dt2w";
     public static final String KEY_CABC = "cabc";
     public static final String CABC_SYSTEM_PROPERTY = "persist.cabc_profile";
+    public static final String KEY_FPS_INFO = "fps_info";
     public static final String KEY_SETTINGS_PREFIX = "device_setting_";
     private static final String ProductName = Utils.ProductName();
     private static final String KEY_CATEGORY_CHARGING = "charging";
@@ -76,6 +77,7 @@ public class DeviceSettings extends PreferenceFragment
     private TwoStatePreference mHBMModeSwitch;
     private TwoStatePreference mOTGModeSwitch;
     private TwoStatePreference mSmartChargingSwitch;
+    private SwitchPreference mFpsInfo;
     private boolean CABC_DeviceMatched;
     private boolean DC_DeviceMatched;
     private boolean HBM_DeviceMatched;
@@ -140,6 +142,10 @@ public class DeviceSettings extends PreferenceFragment
         mRefreshRate60.setChecked(!RefreshRateSwitch.isCurrentlyEnabled(this.getContext()));
         mRefreshRate60.setOnPreferenceChangeListener(new RefreshRateSwitch(getContext()));
 
+        mFpsInfo = findPreference(KEY_FPS_INFO);
+        mFpsInfo.setChecked(prefs.getBoolean(KEY_FPS_INFO, false));
+        mFpsInfo.setOnPreferenceChangeListener(this);
+
         mCABC = (SecureSettingListPreference) findPreference(KEY_CABC);
         mCABC.setValue(Utils.getStringProp(CABC_SYSTEM_PROPERTY, "0"));
         mCABC.setSummary(mCABC.getEntry());
@@ -190,6 +196,15 @@ public class DeviceSettings extends PreferenceFragment
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if (preference == mFpsInfo) {
+            boolean enabled = (Boolean) newValue;
+            if (enabled) {
+                Utils.startService(this.getContext(), com.realmeparts.FPSInfoService.class);
+            } else {
+                Utils.stopService(this.getContext(), com.realmeparts.FPSInfoService.class);
+            }
+        }
+
         if (preference == mChargingSpeed) {
             mChargingSpeed.setValue((String) newValue);
             mChargingSpeed.setSummary(mChargingSpeed.getEntry());
