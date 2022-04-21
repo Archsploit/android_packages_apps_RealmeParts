@@ -213,12 +213,6 @@ public class DeviceSettings extends PreferenceFragment
             mCABC.setSummary(mCABC.getEntry());
             Utils.setStringProp(CABC_SYSTEM_PROPERTY, (String) newValue);
         }
-
-        if (preference == mPerfProfile) {
-            mPerfProfile.setValue((String) newValue);
-            mPerfProfile.setSummary(mPerfProfile.getEntry());
-            Utils.setStringProp(PERF_PROFILE_SYSTEM_PROPERTY, (String) newValue);
-        }
         return true;
     }
 
