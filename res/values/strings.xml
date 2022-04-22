@@ -22,7 +22,6 @@
     <!-- CABC -->
     <string name="cabc_title">CABC Mode</string>
     <string name="cabc_dialogTitle">CABC Profiles</string>
-    <string name="cabc_summary">This feature will lower some display effects to increase your phone\'s endurance</string>
     <string name="cabc_off">Off</string>
     <string name="cabc_normal">On</string>
     <string name="cabc_balanced">Balanced Mode</string>
